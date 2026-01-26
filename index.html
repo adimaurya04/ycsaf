@@ -3,23 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happiest Bithday Mrs Maurya </title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
+    <title>Happy Birthday, My Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>   
         /* --- CSS Variables & Reset --- */
         :root {
-            --primary-color: #d63384; /* Deep Pink */
-            --soft-pink: #fce7f3; /* Light Pink */
+            --primary-color: #d63384; 
+            --soft-pink: #fce7f3; 
             --bg-gradient: linear-gradient(135deg, #fff0f5 0%, #e6e6fa 100%);
-            --glass-bg: rgba(255, 255, 255, 0.6);
             --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Nunito', sans-serif;
@@ -27,6 +22,7 @@
             color: #4a4a4a;
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
         }
 
         h1, h2, h3 {
@@ -34,145 +30,146 @@
             color: var(--primary-color);
         }
 
-        /* --- Header & Landing --- */
+        /* --- STICKER ANIMATION --- */
+        .sticker-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: -1; overflow: hidden;
+        }
+        .sticker {
+            position: absolute; bottom: -50px; font-size: 2rem;
+            animation: floatUp linear infinite; opacity: 0.6;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- HEADER & HUGE CARD --- */
         header {
-            padding: 40px 20px;
+            padding: 20px 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
-        }
-
-        .title-glow {
-            font-size: 4.5rem;
-            text-shadow: 0 0 20px rgba(214, 51, 132, 0.4);
-            animation: pulse 3s infinite ease-in-out;
-            margin-bottom: 10px;
+            width: 100%;
+            min-height: 100vh; /* Header takes full screen now */
         }
 
         /* Cake Animation */
         .cake-container {
             position: relative;
-            width: 150px;
-            height: 150px;
-            margin: 10px auto;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 10px auto;
         }
         .cake-img {
-            font-size: 6rem;
+            font-size: 5rem;
             animation: float 4s ease-in-out infinite;
         }
 
-        /* --- Navigation Buttons --- */
-        .nav-container {
+        /* --- TALLER CARD STYLES (Changes Here) --- */
+        .main-card-bg {
+            background-image: url('https://png.pngtree.com/png-clipart/20240619/original/pngtree-blank-paper-text-box-template-design-with-love-icon-suitable-for-png-image_15369747.png');
+            background-size: 100% 160%; /* Stretches the image to fill the height */
+            background-repeat: no-repeat;
+            background-position: center;
+            
+            /* WIDTH: Same as before (Wide) */
+            width: 95%;              
+            max-width: 1200px;       
+            
+            /* HEIGHT: Increased significantly (2x taller) */
+            height: 75vh;  /* Covers 75% of the screen height */
+            min-height: 600px; /* Minimum height ensures it doesn't get small */
+            
             display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+            flex-direction: column;
             justify-content: center;
-            margin-top: 30px;
-            margin-bottom: 40px;
+            align-items: center;
+            
+            padding: 20px;
+            margin: 0 auto;
         }
 
+        /* TEXT STYLES */
+        .title-glow {
+            font-family: 'Dancing Script', cursive;
+            font-size: 8vh; /* Size adjusts based on height */
+            color: #d32f2f;
+            text-shadow: 3px 3px 0px rgba(255, 255, 255, 0.6);
+            margin: 0;
+            line-height: 1.2;
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        .subtitle-glow {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5vh; /* Size adjusts based on height */
+            color: #b71c1c;
+            margin-top: 10px;
+            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .title-glow { font-size: 3rem; }
+            .subtitle-glow { font-size: 2rem; }
+            .main-card-bg { height: 60vh; } /* Slightly smaller on phone to fit buttons */
+        }
+
+        /* --- NAVIGATION --- */
+        .nav-container {
+            display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;
+            margin-top: 30px; margin-bottom: 40px;
+        }
         .nav-btn {
-            padding: 12px 30px;
-            border-radius: 50px;
+            padding: 12px 30px; border-radius: 50px;
             background: rgba(255, 255, 255, 0.6);
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            outline: none;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 600;
+            font-size: 1.1rem; cursor: pointer;
+            transition: all 0.3s ease; font-family: 'Nunito', sans-serif; font-weight: 600;
         }
-
         .nav-btn:hover, .nav-btn.active {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(214, 51, 132, 0.3);
+            background: var(--primary-color); color: white;
+            transform: translateY(-3px); box-shadow: 0 10px 20px rgba(214, 51, 132, 0.3);
         }
 
-        /* --- Content Sections (Hidden by default) --- */
+        /* --- SECTIONS (Hidden by default) --- */
         .content-section {
-            display: none; /* Sab kuch chhupa rahega */
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
+            display: none; max-width: 1000px; margin: 0 auto; padding: 20px;
             animation: fadeIn 0.8s ease;
         }
+        .content-section.active-section { display: block; }
+        .section-title { font-size: 3rem; text-align: center; margin-bottom: 40px; }
 
-        /* Class to show content */
-        .content-section.active-section {
-            display: block;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        /* --- 1. Memories (Grid) --- */
-        .memories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
+        /* Memories */
+        .memories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .memory-card {
-            position: relative;
-            height: 300px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            cursor: pointer;
+            position: relative; height: 300px; border-radius: 15px; overflow: hidden;
+            box-shadow: var(--shadow); cursor: pointer;
         }
-
-        .memory-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
+        .memory-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .memory-overlay {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-            text-align: center;
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: rgba(255, 255, 255, 0.9); padding: 15px;
+            transform: translateY(100%); transition: transform 0.4s ease; text-align: center;
         }
-
         .memory-card:hover img { transform: scale(1.1); }
         .memory-card:hover .memory-overlay { transform: translateY(0); }
 
-        /* --- 2. Notes (Diary) --- */
+        /* Notes */
         .diary-paper {
-            background: #fffdf5;
-            padding: 40px;
-            border-radius: 5px;
-            box-shadow: var(--shadow);
-            font-size: 1.2rem;
-            line-height: 2;
-            position: relative;
+            background: #fffdf5; padding: 40px; border-radius: 5px; box-shadow: var(--shadow);
+            font-size: 1.2rem; line-height: 2; position: relative;
             background-image: linear-gradient(#eee .1rem, transparent .1rem);
-            background-size: 100% 2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            transform: rotate(-1deg);
+            background-size: 100% 2rem; max-width: 700px; margin: 0 auto; transform: rotate(-1deg);
         }
 
-        /* --- 3. Journey (Timeline) --- */
-        .timeline {
-            position: relative;
-            padding-left: 30px;
-            border-left: 3px solid var(--primary-color);
-        }
+        /* Journey */
+        .timeline { position: relative; padding-left: 30px; border-left: 3px solid var(--primary-color); }
         .timeline-item { margin-bottom: 40px; position: relative; padding-left: 20px; }
         .timeline-item::before {
             content: '❤'; position: absolute; left: -41px; top: 0;
@@ -184,44 +181,51 @@
         }
         .timeline-img { width: 120px; height: 120px; object-fit: cover; border-radius: 10px; }
 
-        /* --- 4. Photos (Grid) --- */
+        /* Photos */
         .gallery-grid { columns: 3 200px; gap: 15px; }
         .gallery-grid img { width: 100%; border-radius: 10px; margin-bottom: 15px; transition: transform 0.3s; }
         .gallery-grid img:hover { transform: scale(1.02); }
 
-        /* --- Footer --- */
-        .footer-section {
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.5);
+        /* Special Note */
+        .special-note-card {
+            background: #fffdf9; border-radius: 20px; padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;
+            max-width: 500px; margin: 40px auto; border: 3px solid #f0e6d2;
         }
+        .present-btn {
+            background-color: #ff69b4; color: white; padding: 12px 24px;
+            border: none; border-radius: 30px; font-size: 1.1rem; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3); transition: transform 0.2s;
+        }
+        .present-btn:hover { transform: scale(1.05); }
+
+        /* Footer */
+        .footer-section { text-align: center; padding: 40px 20px; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.5); }
 
         /* Animations */
-        @keyframes pulse { 0%, 100% { opacity: 0.8; } 50% { opacity: 1; } }
+        @keyframes pulse { 0%, 100% { opacity: 0.8; transform: scale(1); } 50% { opacity: 1; transform: scale(1.02); } }
         @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        @media (max-width: 768px) {
-            .title-glow { font-size: 3rem; }
-            .timeline-content { flex-direction: column; }
-        }
     </style>
 </head>
 <body>
 
+    <div class="sticker-container" id="sticker-container"></div>
+
     <header>
-        <div class="cake-container">
-            <div class="cake-img">🎂</div>
+
+
+        <div class="main-card-bg">
+            <h1 class="title-glow">Happy Birthday</h1>
+            <h2 class="subtitle-glow">My Dearest Love</h2>
         </div>
-        <h1 class="title-glow">Happiest Birthday</h1>
-        <h2 style="font-size: 1.8rem; color: #666;">Mrs Maurya</h2>
 
         <div class="nav-container">
             <button class="nav-btn" onclick="openSection('memories')">Memories</button>
             <button class="nav-btn" onclick="openSection('notes')">Notes</button>
             <button class="nav-btn" onclick="openSection('journey')">Journey</button>
             <button class="nav-btn" onclick="openSection('photos')">Photos</button>
+            <button class="nav-btn" onclick="openSection('special-note')">Special Note</button>
         </div>
     </header>
 
@@ -283,6 +287,17 @@
         </div>
     </div>
 
+    <div id="special-note" class="content-section">
+        <div class="special-note-card">
+            <h2 class="note-title" style="font-family: 'Nunito'; color: #333;">A Surprise...</h2>
+            <p class="note-body" style="font-family: 'Nunito'; color: #666;">
+                I wanted to do something special for you.<br>
+                Click below! ✨
+            </p>
+            <button class="present-btn" onclick="alert('Your surprise is a big hug and lots of love! (and maybe a real gift later!)')">Click here 🎁</button>
+        </div>
+    </div>
+
     <footer class="footer-section">
         <p style="margin-bottom: 10px;">🎵 Play our song</p>
         <audio controls style="border-radius: 30px; outline: none;">
@@ -292,33 +307,32 @@
 
     <script>
         function openSection(sectionId) {
-            // 1. Sabhi sections ko chhupa do (Hide all sections)
             const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => {
-                section.classList.remove('active-section');
-            });
-
-            // 2. Sabhi buttons se 'active' style hata do
+            sections.forEach(s => s.classList.remove('active-section'));
             const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            // 3. Jo button click kiya, uska section dikhao (Show target section)
-            const targetSection = document.getElementById(sectionId);
-            if (targetSection) {
-                targetSection.classList.add('active-section');
-                
-                // Scroll thoda sa neeche taaki user ko dikhe content khul gaya hai
-                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            buttons.forEach(b => b.classList.remove('active'));
+            const target = document.getElementById(sectionId);
+            if (target) {
+                target.classList.add('active-section');
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-
-            // 4. Jis button ko click kiya, use highlight karo
             event.currentTarget.classList.add('active');
         }
+
+        function createSticker() {
+            const container = document.getElementById('sticker-container');
+            const emojis = ['❤️', '💖', '✨', '🌸', '🦋', '🎂', '😍'];
+            const sticker = document.createElement('div');
+            sticker.classList.add('sticker');
+            sticker.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            sticker.style.left = Math.random() * 100 + 'vw';
+            sticker.style.animationDuration = (Math.random() * 3 + 4) + 's'; 
+            sticker.style.fontSize = (Math.random() * 20 + 20) + 'px'; 
+            container.appendChild(sticker);
+            setTimeout(() => sticker.remove(), 7000);
+        }
+        setInterval(createSticker, 500);
     </script>
 
 </body>
-
 </html>
-
